@@ -1,0 +1,55 @@
+import java.util.*;
+class Card
+{
+    private String symbol;
+    private String value;
+    public Card(String symbol, String value)
+    {
+        this.symbol=symbol;
+        this.value=value;
+    }
+    public String getSymbol()
+    {
+        return symbol;
+    }
+    public String getValue()
+    {
+        return value;
+    }
+    @Override
+    public String toString()
+    {
+        return value+"of "+symbol;
+    }
+}
+
+public class CardCollection
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        Collection<Card> c=new ArrayList<>();
+        System.out.print("Enter the number of cards: ");
+        int numCards=sc.nextInt();
+        sc.nextLine();
+        for(int i=0;i<numCards;i++)
+        {
+            System.out.print("Enter card symbol: ");
+            String symbol=sc.nextLine();
+            System.out.print("Enter card Value: ");
+            String value=sc.nextLine();
+            c.add(new Card(symbol,value));
+        }
+        System.out.print("Enter a symbol to search: ");
+        String searchSymbol=sc.nextLine();
+        System.out.println("Cards with symbol "+searchSymbol+":");
+        for(Card card:c)
+        {
+            if(card.getSymbol().equalsIgnoreCase(searchSymbol))
+            {
+                System.out.println(card);
+            }
+        }
+        sc.close();
+    }
+}
